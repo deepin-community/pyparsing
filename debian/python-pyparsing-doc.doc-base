@@ -5,5 +5,5 @@ Abstract: Sphinx documentation for PyParsing
 Section: Network/Remote Access
 
 Format: HTML
-Index: /usr/share/doc/python-pyparsing/html/index.html
-Files: /usr/share/doc/python-pyparsing/html/*
+Index: /usr/share/doc/python-pyparsing-doc/html/index.html
+Files: /usr/share/doc/python-pyparsing-doc/html/*
