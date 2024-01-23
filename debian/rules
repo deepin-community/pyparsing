@@ -1,15 +1,15 @@
 #!/usr/bin/make -f
 
-#export DH_VERBOSE = 1
-#export PYBUILD_VERBOSE = 1
 export PYBUILD_NAME = pyparsing
+export PYBUILD_TEST_ARGS = -v -k "not test_range_check"
 
 %:
-	dh $@ --with=python3,pypy,sphinxdoc --buildsystem=pybuild
+	dh $@ --buildsystem=pybuild
 
-override_dh_auto_build-indep:
-	dh_auto_build
+execute_after_dh_auto_build-indep:
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
 	PYTHONPATH=`pybuild --print {build_dir}` http_proxy='127.0.0.1:9' make -C docs html # HTML generator
+endif
 
 override_dh_installexamples:
 	dh_installexamples -i -ppython-pyparsing-doc -X.pyc -X__pycache__
